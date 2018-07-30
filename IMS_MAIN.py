@@ -191,15 +191,15 @@ def updateProduct():
         print(pname)
         result=supplier.update_one({'_id':pname},{'$set':{'price_per_qty' : price_per_qty,'product_quantity': quantity,'delivery_day': delivery_day,'product_create_dt': pcreate_dt}})
         print(result.modified_count)
-		var data = {
+	var data = {
 		  '_id' : pname,
 		  'price_per_qty' : price_per_qty,
 		  'product_quantity': quantity,
 		  'delivery_day': delivery_day,
 		  'product_create_dt': pcreate_dt
 		  
-		}
-		return json.dumps(data)
+		   }
+        return json.dumps(data)
         #return redirect(url_for('showallproducts'))
 
  
@@ -302,17 +302,17 @@ def upload():
             if existing_user is None:
                 users.insert(item)
                 #print('Inserted : '+ str(item))
-				var data = {
-				        'existing_user' : existing_user,
-						'item' : str(item)
-				}
+		var data = {
+		             'existing_user' : existing_user,
+			     'item' : str(item)
+			   }
             else:
                 #print('User Already Exsist !!!' + str(item))
-				var data = {
-				        'existing_user' : existing_user,
-						'item' : str(item)
-				}
-			return json.dumps(data)
+		var data = {
+			      'existing_user' : existing_user,
+			      'item' : str(item)
+			   }
+	return json.dumps(data)
         #return render_template('excel_upload.html')
     #return render_template('excel_upload.html')
 
@@ -331,17 +331,17 @@ def aupload():
             if existing_user is None:
                 prodcut_master.insert(item)
                 #print('Inserted : '+ str(item))
-				var data = {
-				        'existing_user' : existing_user,
-						'item' : str(item)
-				}
+		var data = {
+			      'existing_user' : existing_user,
+			      'item' : str(item)
+			   }
             else:
                 #print('User Already Exsist !!!' + str(item))
-				var data = {
-				        'existing_user' : existing_user,
-						'item' : str(item)
+		var data = {
+			      'existing_user' : existing_user,
+			      'item' : str(item)
 				}
-			return json.dumps(data)
+	return json.dumps(data)
         #return render_template('excel_aupload.html')
     #return render_template('excel_aupload.html')
 
@@ -464,10 +464,10 @@ def addToWishList():
             if wish_list_detail is not None:
                 quantity=int(wish_list_detail['quantity'])+int(no_orders)
                 wish_list_details.update_one({'_id' : wish_list_detail['wish_id'] },{"$set" : {'quantity' : str(quantity)}})
-				var data = {
-				        '_id' : wish_list_detail['wish_id'],
-						'quantity' : str(quantity)
-				}
+		var data = {
+			      '_id' : wish_list_detail['wish_id'],
+			      'quantity' : str(quantity)
+		           }
                 #return redirect(url_for('subcontract'))
             else:
                 wish_list_details.insert_one({'_id' : wish_id ,'wish_id':wish_id,'product_id':product_id,
@@ -478,22 +478,22 @@ def addToWishList():
                                                           'quantity' : str(no_orders),
                                                           'wish_stauts' : 'PE',
                                                           'wish_dt': order_dt,'supplier_id':user,'sub_contractor_id' : sub_contractor_id})
-				var data = {
-				        '_id' : wish_list_detail['wish_id'],
-						'wish_id':wish_id,
-						'product_id':product_id,
-                        'sub_product_id' : sub_product_id,
-						'sup_product_id' : '',
-                        'product_name' : product_name,
-						'Product_type' : Product_type,
-                        'product_description' : product_description, 
-                        'price' : str(price),
-                        'quantity' : str(no_orders),
-                        'wish_stauts' : 'PE',
-                        'wish_dt': order_dt,
-						'supplier_id':user,
-						'sub_contractor_id' : sub_contractor_id
-				}
+		var data = {
+			       '_id' : wish_list_detail['wish_id'],
+				'wish_id':wish_id,
+				'product_id':product_id,
+                                'sub_product_id' : sub_product_id,
+				'sup_product_id' : '',
+                                'product_name' : product_name,
+				'Product_type' : Product_type,
+                                'product_description' : product_description, 
+                                'price' : str(price),
+                                'quantity' : str(no_orders),
+                                'wish_stauts' : 'PE',
+                                'wish_dt': order_dt,
+				'supplier_id':user,
+				'sub_contractor_id' : sub_contractor_id
+			}
                 #return redirect(url_for('subcontract'))
             return json.dumps(data)   
         except pymongo.errors.DuplicateKeyError as e:
